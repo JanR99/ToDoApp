@@ -7,8 +7,7 @@ import java.util.ArrayList;
 public class ToDoListApp extends JFrame {
 
     //TODO add an delete Button or something
-    //TODO make it save the data as txt. file if possible
-    //TODO clear current list when loading another one
+    //TODO doesnt show all txt files in the folder
 
     private final JPanel mainPanel;
     private final JPanel topPanel;
@@ -81,7 +80,7 @@ public class ToDoListApp extends JFrame {
      */
     private void saveToDoList() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", ".txt"));
         int result = fileChooser.showSaveDialog(ToDoListApp.this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
@@ -112,10 +111,15 @@ public class ToDoListApp extends JFrame {
     private void loadToDoList() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Load ToDo List");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", ".txt"));
         int userSelection = fileChooser.showOpenDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToLoad = fileChooser.getSelectedFile();
+            for(JCheckBox checkBox : checkBoxList) {
+                mainPanel.remove(checkBox);
+            }
+            todoList.clear();
+            checkBoxList.clear();
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
                 String line;
