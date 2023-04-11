@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class ToDoListApp extends JFrame {
 
     //TODO add an delete Button or something
-    //TODO make the window pop up in the middle of the screen
     //TODO make it save the data as txt. file if possible
     //TODO try what happens if you give the program random files
 
@@ -32,6 +31,7 @@ public class ToDoListApp extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 400);
         setVisible(true);
+        setLocationRelativeTo(null);
 
         // initialize components
         addButton = new JButton("Add ToDo");
