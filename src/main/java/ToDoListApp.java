@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class ToDoListApp extends JFrame {
 
-    //TODO make the delete Button work
     //TODO doesnt show all txt files in the folder
+    //TODO only changes after resizing window
 
     private final JPanel mainPanel;
     private final JPanel topPanel;
@@ -57,7 +57,7 @@ public class ToDoListApp extends JFrame {
         saveAndDeletePanel.add(deleteButton, BorderLayout.NORTH);
         saveAndDeletePanel.add(saveButton, BorderLayout.SOUTH);
 
-        // add components to main frame
+        // add components to JFrame/self
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(topPanel, BorderLayout.NORTH);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -67,6 +67,7 @@ public class ToDoListApp extends JFrame {
         addButton.addActionListener(e -> addNewToDo());
         saveButton.addActionListener(e -> saveToDoList());
         loadButton.addActionListener(e -> loadToDoList());
+        deleteButton.addActionListener(e -> deleteSelected());
     }
 
     /**
@@ -143,6 +144,17 @@ public class ToDoListApp extends JFrame {
                 reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+    private void deleteSelected() {
+        for(JCheckBox current : checkBoxList) {
+            if(current.isSelected()) {
+                // Delete all selected checkboxes
+                int index = checkBoxList.indexOf(current);
+                todoList.remove(index);
+                checkBoxList.remove(current);
+                mainPanel.remove(current);
             }
         }
     }
