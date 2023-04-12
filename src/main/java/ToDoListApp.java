@@ -141,6 +141,8 @@ public class ToDoListApp extends JFrame {
                         mainPanel.add(newCheckBox);
                     }
                 }
+                revalidate();
+                repaint();
                 reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
