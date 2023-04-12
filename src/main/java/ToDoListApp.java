@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class ToDoListApp extends JFrame {
 
-    //TODO doesnt show all txt files in the folder
+    //TODO write comments
+    //TODO cant delete after loading( probably the elements are not written in the lists
 
     private final JPanel mainPanel;
     private final ArrayList<JCheckBox> checkBoxList;
@@ -86,7 +87,7 @@ public class ToDoListApp extends JFrame {
      */
     private void saveToDoList() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", ".txt"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt"));
         int result = fileChooser.showSaveDialog(ToDoListApp.this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
@@ -99,7 +100,7 @@ public class ToDoListApp extends JFrame {
                 }
             }
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave + ".txt"))) {
                 for (String todo : todoList) {
                     writer.write(todo + "\n");
                 }
@@ -114,8 +115,8 @@ public class ToDoListApp extends JFrame {
      */
     private void loadToDoList() {
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Text File", "txt"));
         fileChooser.setDialogTitle("Load ToDo List");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", ".txt"));
         int userSelection = fileChooser.showOpenDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToLoad = fileChooser.getSelectedFile();
