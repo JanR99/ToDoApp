@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class ToDoListApp extends JFrame {
 
     //TODO doesnt show all txt files in the folder
-    //TODO only changes after resizing window
 
     private final JPanel mainPanel;
     private final JPanel topPanel;
@@ -68,6 +67,10 @@ public class ToDoListApp extends JFrame {
         saveButton.addActionListener(e -> saveToDoList());
         loadButton.addActionListener(e -> loadToDoList());
         deleteButton.addActionListener(e -> deleteSelected());
+
+        // To make sure all components show at the beginning
+        revalidate();
+        repaint();
     }
 
     /**
@@ -107,8 +110,6 @@ public class ToDoListApp extends JFrame {
                 for (String todo : todoList) {
                     writer.write(todo + "\n");
                 }
-                writer.close();
-                JOptionPane.showMessageDialog(this, "ToDo list saved successfully!");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
