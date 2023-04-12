@@ -6,15 +6,17 @@ import java.util.ArrayList;
 
 public class ToDoListApp extends JFrame {
 
-    //TODO add an delete Button or something
+    //TODO make the delete Button work
     //TODO doesnt show all txt files in the folder
 
     private final JPanel mainPanel;
     private final JPanel topPanel;
+    private final JPanel saveAndDeletePanel;
     private final JScrollPane scrollPane;
     private final JButton addButton;
     private final JButton saveButton;
     private final JButton loadButton;
+    private final JButton deleteButton;
     private ArrayList<JCheckBox> checkBoxList;
     private ArrayList<String> todoList;
 
@@ -27,16 +29,19 @@ public class ToDoListApp extends JFrame {
      * Initializes the components of the app
      */
     public ToDoListApp() {
+        // initialize JFrame/self
         super("ToDo List App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 400);
         setVisible(true);
         setLocationRelativeTo(null);
 
-        // initialize components
+        // initialize Buttons
         addButton = new JButton("Add ToDo");
         saveButton = new JButton("Save ToDo List");
         loadButton = new JButton("Load ToDo List");
+        deleteButton = new JButton("Delete all selected");
+
         checkBoxList = new ArrayList<>();
         todoList = new ArrayList<>();
         mainPanel = new JPanel();
@@ -47,12 +52,16 @@ public class ToDoListApp extends JFrame {
         topPanel.add(addButton);
         scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        saveAndDeletePanel = new JPanel();
+        saveAndDeletePanel.setLayout(new BorderLayout());
+        saveAndDeletePanel.add(deleteButton, BorderLayout.NORTH);
+        saveAndDeletePanel.add(saveButton, BorderLayout.SOUTH);
 
         // add components to main frame
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(topPanel, BorderLayout.NORTH);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
-        getContentPane().add(saveButton, BorderLayout.SOUTH);
+        getContentPane().add(saveAndDeletePanel, BorderLayout.SOUTH);
 
         // add the functionality of the buttons
         addButton.addActionListener(e -> addNewToDo());
