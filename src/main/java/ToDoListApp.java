@@ -9,15 +9,8 @@ public class ToDoListApp extends JFrame {
     //TODO doesnt show all txt files in the folder
 
     private final JPanel mainPanel;
-    private final JPanel topPanel;
-    private final JPanel saveAndDeletePanel;
-    private final JScrollPane scrollPane;
-    private final JButton addButton;
-    private final JButton saveButton;
-    private final JButton loadButton;
-    private final JButton deleteButton;
-    private ArrayList<JCheckBox> checkBoxList;
-    private ArrayList<String> todoList;
+    private final ArrayList<JCheckBox> checkBoxList;
+    private final ArrayList<String> todoList;
 
 
     public static void main(String[] args) {
@@ -36,22 +29,22 @@ public class ToDoListApp extends JFrame {
         setLocationRelativeTo(null);
 
         // initialize Buttons
-        addButton = new JButton("Add ToDo");
-        saveButton = new JButton("Save ToDo List");
-        loadButton = new JButton("Load ToDo List");
-        deleteButton = new JButton("Delete all selected");
+        JButton addButton = new JButton("Add ToDo");
+        JButton saveButton = new JButton("Save ToDo List");
+        JButton loadButton = new JButton("Load ToDo List");
+        JButton deleteButton = new JButton("Delete all selected");
 
         checkBoxList = new ArrayList<>();
         todoList = new ArrayList<>();
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        topPanel = new JPanel();
+        JPanel topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(1, 2));
         topPanel.add(loadButton);
         topPanel.add(addButton);
-        scrollPane = new JScrollPane(mainPanel);
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        saveAndDeletePanel = new JPanel();
+        JPanel saveAndDeletePanel = new JPanel();
         saveAndDeletePanel.setLayout(new BorderLayout());
         saveAndDeletePanel.add(deleteButton, BorderLayout.NORTH);
         saveAndDeletePanel.add(saveButton, BorderLayout.SOUTH);
