@@ -6,9 +6,6 @@ import java.util.ArrayList;
 
 public class ToDoListApp extends JFrame {
 
-    //TODO write comments
-    //TODO cant delete after loading( probably the elements are not written in the lists
-
     /**
      * Panel where the items of the list are written to
      */
@@ -24,7 +21,17 @@ public class ToDoListApp extends JFrame {
 
 
     public static void main(String[] args) {
-        new ToDoListApp();
+        ToDoListApp todo = new ToDoListApp();
+        for(;;) {
+            for(String s : todo.todoList)
+                System.out.print(s + " ");
+            System.out.println();
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
