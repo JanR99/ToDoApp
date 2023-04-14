@@ -145,14 +145,18 @@ public class ToDoListApp extends JFrame {
         }
     }
     private void deleteSelected() {
-        for(JCheckBox current : checkBoxList) {
+        for(int i = 0; i < checkBoxList.size(); i++) {
+            JCheckBox current = checkBoxList.get(i);
             if(current.isSelected()) {
                 // Delete all selected checkboxes
                 int index = checkBoxList.indexOf(current);
                 todoList.remove(index);
                 checkBoxList.remove(current);
                 mainPanel.remove(current);
+                i = -1;
             }
         }
+        revalidate();
+        repaint();
     }
 }
