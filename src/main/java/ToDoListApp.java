@@ -9,8 +9,17 @@ public class ToDoListApp extends JFrame {
     //TODO write comments
     //TODO cant delete after loading( probably the elements are not written in the lists
 
+    /**
+     * Panel where the items of the list are written to
+     */
     private final JPanel mainPanel;
+    /**
+     * current checkboxes
+     */
     private final ArrayList<JCheckBox> checkBoxList;
+    /**
+     * String list of thing to do
+     */
     private final ArrayList<String> todoList;
 
 
@@ -29,15 +38,16 @@ public class ToDoListApp extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-        // initialize Buttons
+        // initialize components
         JButton addButton = new JButton("Add ToDo");
         JButton saveButton = new JButton("Save ToDo List");
         JButton loadButton = new JButton("Load ToDo List");
         JButton deleteButton = new JButton("Delete all selected");
-
         checkBoxList = new ArrayList<>();
         todoList = new ArrayList<>();
         mainPanel = new JPanel();
+
+        // initialize panels
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(1, 2));
