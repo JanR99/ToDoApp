@@ -21,17 +21,7 @@ public class ToDoListApp extends JFrame {
 
 
     public static void main(String[] args) {
-        ToDoListApp todo = new ToDoListApp();
-        for(;;) {
-            for(String s : todo.todoList)
-                System.out.print(s + " ");
-            System.out.println();
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        new ToDoListApp();
     }
 
     /**
